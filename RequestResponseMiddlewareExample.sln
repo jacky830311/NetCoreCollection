@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommUtils", "CommUtils\CommUtils.csproj", "{5405EE61-35E4-4E54-9E1A-869353EC458D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RequestResponseMiddlewareExample", "RequestResponseMiddlewareExample\RequestResponseMiddlewareExample.csproj", "{C69CC51B-A4DF-4BC6-A8A2-009B58703109}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5405EE61-35E4-4E54-9E1A-869353EC458D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5405EE61-35E4-4E54-9E1A-869353EC458D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5405EE61-35E4-4E54-9E1A-869353EC458D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5405EE61-35E4-4E54-9E1A-869353EC458D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C69CC51B-A4DF-4BC6-A8A2-009B58703109}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C69CC51B-A4DF-4BC6-A8A2-009B58703109}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C69CC51B-A4DF-4BC6-A8A2-009B58703109}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C69CC51B-A4DF-4BC6-A8A2-009B58703109}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
