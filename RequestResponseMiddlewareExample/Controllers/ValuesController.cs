@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
+using RequestResponseMiddlewareTest.Model;
 
 namespace RequestResponseMiddlewareTest.Controllers
 {
@@ -6,7 +8,6 @@ namespace RequestResponseMiddlewareTest.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        // POST api/values
         [Route("Login")]
         [HttpPost]
         public JsonResult Login([FromBody] LoginRequest login)
@@ -15,7 +16,7 @@ namespace RequestResponseMiddlewareTest.Controllers
             {
                 var failed = new
                 {
-                    Message = "loginFailed"
+                    Message = "LoginFailed"
                 };
 
                 return new JsonResult(failed);
@@ -23,25 +24,27 @@ namespace RequestResponseMiddlewareTest.Controllers
 
             var success = new
             {
-                Message = "loginFailed"
+                Message = "LoginSuccess"
             };
 
             return new JsonResult(success);
         }
 
-        [Route("Test")]
+        [Route("Init")]
         [HttpGet]
-        public JsonResult Test()
+        public JsonResult Init()
         {
             return new JsonResult(new
             {
                 IsSuccess = true
             });
         }
-    }
 
-    public class LoginRequest
-    {
-        public string Account { get; set; }
+        [Route("Error")]
+        [HttpGet]
+        public JsonResult Error()
+        {
+            throw new Exception("Unexpected Exception");
+        }
     }
 }

@@ -1,0 +1,10 @@
+2019-03-21 00:54:45.8198 Info Message Template Auto Format enabled
+2019-03-21 00:54:45.8829 Info Loading assembly: NLog.Web.AspNetCore
+2019-03-21 00:54:46.0366 Info Adding target File Target[allfile]
+2019-03-21 00:54:46.0444 Info Configured from an XML element in /Users/jacky07081278/git/NetCoreCollection/RequestResponseMiddlewareExample/bin/Debug/netcoreapp2.1/nlog.config...
+2019-03-21 00:54:46.0666 Info Found 20 configuration items
+2019-03-21 01:09:01.4603 Info Message Template Auto Format enabled
+2019-03-21 01:09:01.5153 Info Loading assembly: NLog.Web.AspNetCore
+2019-03-21 01:09:01.6639 Info Adding target File Target[allfile]
+2019-03-21 01:09:01.6691 Info Configured from an XML element in /Users/jacky07081278/git/NetCoreCollection/RequestResponseMiddlewareExample/bin/Debug/netcoreapp2.1/nlog.config...
+2019-03-21 01:09:01.6819 Info Found 20 configuration items

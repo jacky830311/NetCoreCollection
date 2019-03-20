@@ -2,8 +2,10 @@ using System;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using CommUtils.Logger;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Internal;
+using Newtonsoft.Json;
 
 namespace RequestResponseMiddlewareTest.Middleware
 {
@@ -16,24 +18,42 @@ namespace RequestResponseMiddlewareTest.Middleware
             _next = next;
         }
 
-        public async Task Invoke(HttpContext context)
+        public async Task Invoke(HttpContext context, IJackyLogManager iJackyLogManager)
         {
-            //讀取Request Body
-            var requestBody = await FormatRequest(context.Request);
-
             //取得ResponseBodyStream的位置，我們要把這個不能被讀取的HttpStream偷偷換成一個可讀取的MemoryStream
             var originalResponseBodyStream = context.Response.Body;
-
-            using (var newResponseBodyStream = new MemoryStream())
+            
+            try
             {
-                //換成一個可讀取的MemoryStream
-                context.Response.Body = newResponseBodyStream;
+                //讀取Request Body
+                var requestBody = await FormatRequest(context.Request);
+                iJackyLogManager.LogInfo($"RequestBody : {requestBody}");
 
-                //處理Request
-                await _next(context);
+                using (var newResponseBodyStream = new MemoryStream())
+                {
+                    //換成一個可讀取的MemoryStream
+                    context.Response.Body = newResponseBodyStream;
 
-                //讀取Response Body
-                var responseBody = await FormatResponse(newResponseBodyStream, originalResponseBodyStream);
+                    //處理Request
+                    await _next(context);
+
+                    //讀取Response Body
+                    var responseBody = await FormatResponse(newResponseBodyStream, originalResponseBodyStream);
+                    iJackyLogManager.LogInfo($"ResponseBody : {responseBody}");
+                }
+            }
+            catch (Exception e)
+            {
+                iJackyLogManager.LogError(e);
+                
+                var errorMessage = JsonConvert.SerializeObject(new
+                {
+                    ErrorMessage = e.Message
+                });
+                var bytes = Encoding.UTF8.GetBytes(errorMessage);
+                
+                await originalResponseBodyStream.WriteAsync(
+                    bytes, 0, bytes.Length);
             }
         }
 
