@@ -9,11 +9,11 @@ using Newtonsoft.Json;
 
 namespace RequestResponseMiddlewareTest.Middleware
 {
-    public class LogRequestResponseMiddleware
+    public class LogMiddleware
     {
         private readonly RequestDelegate _next;
 
-        public LogRequestResponseMiddleware(RequestDelegate next)
+        public LogMiddleware(RequestDelegate next)
         {
             _next = next;
         }

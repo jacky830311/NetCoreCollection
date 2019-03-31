@@ -33,7 +33,7 @@ namespace RequestResponseMiddlewareTest
             else
                 app.UseHsts();
 
-            app.UseMiddleware<LogRequestResponseMiddleware>();
+            app.UseMiddleware<LogMiddleware>();
 
             app.UseHttpsRedirection();
             app.UseMvc();
