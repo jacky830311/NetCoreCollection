@@ -5,7 +5,7 @@ namespace CommUtils.Logger
 {
     public class JackyLogManager : IJackyLogManager
     {
-        private NLog.Logger _logger;
+        private readonly NLog.Logger _logger;
 
         public JackyLogManager()
         {
